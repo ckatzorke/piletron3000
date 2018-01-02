@@ -1,0 +1,15 @@
+<div class="field has-addons">
+  <div class="control is-expanded">
+    <input [(ngModel)]="searchTerm" class="input" type="text" placeholder="Enter a game name...">
+  </div>
+  <div class="control">
+    <a class="button is-info" (click)="onSearch()">
+      Search
+    </a>
+  </div>
+</div>
+<div class="columns">
+  <div *ngFor="let result of searchResults" class="column">
+    <app-searchresult [result]="result"></app-searchresult>
+  </div>
+</div>

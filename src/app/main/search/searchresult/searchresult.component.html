@@ -1,0 +1,24 @@
+<div class="card">
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-96x96">
+          <img src="{{ result.imageUrl }}" alt="Cover of {{ result.name }}">
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4">
+          <a
+            href="https://howlongtobeat.com/game.php?id={{result.id }}"
+            title="Click for more info"
+            target="_blank"
+            rel="noopener">{{ result.name }} <i class="fas fa-external-link-alt"></i>
+          </a>
+        </p>
+        <p><i class="far fa-clock"></i>&nbsp; <span [innerHTML]="showGameplayTime()"></span></p>
+        <p>&nbsp;</p>
+        <p><a href="" class="button is-primary" title="Add to pile"><i class="fas fa-plus-circle"></i>&nbsp;Add to pile</a></p>
+      </div>
+    </div>
+  </div>
+</div>

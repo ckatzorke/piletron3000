@@ -1,3 +1,26 @@
-<header>
-  Piletron 3000&trade;  <a routerLink="">Your pile</a> <a routerLink="about">About</a>
-</header>
+<nav class="navbar is-fixed-top is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" routerLink="main">
+      PileTron 3000&trade;
+    </a>
+    <div class="navbar-burger burger" data-target="navMenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div id="navMenu" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" routerLink="main" routerLinkActive="is-active">
+        Size your Pile!
+      </a>
+    </div>
+
+    <div class="navbar-end">
+      <a class="navbar-item" routerLink="about" routerLinkActive="is-active">
+        About&nbsp;<i class="far fa-question-circle"></i>
+      </a>
+    </div>
+  </div>
+</nav>

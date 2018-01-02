@@ -158,6 +158,22 @@
   dependencies:
     tslib "^1.7.1"
 
+"@fortawesome/fontawesome-free-brands@^5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free-brands/-/fontawesome-free-brands-5.0.2.tgz#a1cc602eec40a379a3dd8a44c78b31110dd3d3d3"
+
+"@fortawesome/fontawesome-free-regular@^5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free-regular/-/fontawesome-free-regular-5.0.2.tgz#429af86bed14689f87648e6322983c65c782c017"
+
+"@fortawesome/fontawesome-free-solid@^5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free-solid/-/fontawesome-free-solid-5.0.2.tgz#090ce2c59dd5ec76983f3da8a43e1ab0321b42d5"
+
+"@fortawesome/fontawesome@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome/-/fontawesome-1.1.0.tgz#2a949fa46d96e41092e67218b42579f8e54c7b7f"
+
 "@ngtools/json-schema@1.1.0", "@ngtools/json-schema@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@ngtools/json-schema/-/json-schema-1.1.0.tgz#c3a0c544d62392acc2813a42c8a0dc6f58f86922"
@@ -762,6 +778,10 @@ builtin-modules@^1.0.0:
 builtin-status-codes@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
+
+bulma@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.6.1.tgz#5f21a77c0c06f7d80051c06628c23516081bd649"
 
 bytes@3.0.0:
   version "3.0.0"

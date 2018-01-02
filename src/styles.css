@@ -1,4 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
-body{
-  font-family: Arial, Helvetica, sans-serif;
+@font-face {
+  font-family: '04b08';
+  src:url('assets/fonts/04b08.ttf.woff') format('woff'),
+      url('assets/fonts/04b08.ttf.svg#04b08') format('svg'),
+      url('assets/fonts/04b08.ttf.eot'),
+      url('assets/fonts/04b08.ttf.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
 }
+
+.pixel {
+  font-family: '04b08';
+}
+
+@import "~bulma/css/bulma.css"

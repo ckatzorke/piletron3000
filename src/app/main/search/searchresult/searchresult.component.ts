@@ -16,6 +16,10 @@ export class SearchresultComponent implements OnInit {
   ngOnInit() {
   }
 
+  propability() {
+    return Math.round(this.result.similarity * 100) + '%';
+  }
+
   showGameplayTime(): string {
     if (this.result.gameplayMain === 0 && this.result.gameplayCompletionist === 0) {
       return 'Sorry, no time information available';

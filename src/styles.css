@@ -8,6 +8,10 @@
   font-style: normal;
 }
 
+.is-center{
+  text-align: center;
+}
+
 .pixel {
   font-family: '04b08';
 }

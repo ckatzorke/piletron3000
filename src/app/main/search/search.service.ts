@@ -1,7 +1,8 @@
 import { SearchResult } from './searchresult.model';
 import { HttpClient } from '@angular/common/http';
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 
+@Injectable()
 export class SearchService {
 
   /**

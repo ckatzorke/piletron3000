@@ -10,9 +10,7 @@ export class SearchService {
    */
   updates = new EventEmitter<Array<SearchResult>>();
 
-  results = [
-    new SearchResult('2302', 'Dead Island', 'https://howlongtobeat.com/gameimages/Dead_island_PC_packshot.png', 18, 46, 1),
-    new SearchResult('2306', 'Dead Island: Riptide', 'https://howlongtobeat.com/gameimages/DeadIslandRiptide.jpg', 11.5, 36.5, 0.55)];
+  results: Array<SearchResult>;
 
   constructor(private http: HttpClient) { }
 
@@ -22,10 +20,10 @@ export class SearchService {
 
   search(searchTerm: string): void {
     this.http.get(`https://ckatzorke.lib.id/hltb/?search=${searchTerm}`).subscribe(data => {
-      console.log('got data', data);
       this.results = data['result'];
-      console.log('updated results', this.results);
       this.updates.emit(this.results);
+    }, err => {
+      // todo
     });
   }
 }

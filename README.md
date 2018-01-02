@@ -1,5 +1,10 @@
 # PileTron3000
 
+A side project to visualize/materialize your inevitable pile of shame, every grown up, working/parenting person knows.
+It uses data from [Howlongtobeat](https://howlongtobeat.com), packed in a serverless function hosted on [Stdlib](https://stdlib.com) using my own library [howlongtobeat](https://github.com/ckatzorke/howlongtobeat).
+
+## Original readme from ng cli
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.3.
 
 ## Development server

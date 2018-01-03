@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  burger = false;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  toggleBurger() {
+    this.burger = !this.burger;
   }
 
 }

@@ -12,6 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { SearchComponent } from './main/search/search.component';
 import { SearchService } from './main/search/search.service';
 import { SearchresultComponent } from './main/search/searchresult/searchresult.component';
+import { PileService } from './main/pile/pile.service';
+import { PileComponent } from './main/pile/pile.component';
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { SearchresultComponent } from './main/search/searchresult/searchresult.c
     AboutComponent,
     MainComponent,
     SearchComponent,
-    SearchresultComponent
+    SearchresultComponent,
+    PileComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,7 @@ import { SearchresultComponent } from './main/search/searchresult/searchresult.c
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [SearchService],
+  providers: [SearchService, PileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

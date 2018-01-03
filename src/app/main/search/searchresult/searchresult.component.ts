@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchResult } from '../searchresult.model';
 import { Input } from '@angular/core';
+import { PileService } from '../../pile/pile.service';
+import { PileEntry } from '../../pile/pile.model';
 
 @Component({
   selector: 'app-searchresult',
@@ -11,7 +13,7 @@ export class SearchresultComponent implements OnInit {
 
   @Input() result: SearchResult;
 
-  constructor() { }
+  constructor(private pileService: PileService) { }
 
   ngOnInit() {
   }
@@ -30,6 +32,11 @@ export class SearchresultComponent implements OnInit {
     }
     return `It will take you from <strong>${this.result.gameplayMain}</strong> to
       <strong>${this.result.gameplayCompletionist}</strong> hours to beat this game`;
+  }
+
+  addToPile() {
+    this.pileService.add(
+      new PileEntry(this.result.id, this.result.name, this.result.imageUrl, this.result.gameplayMain, this.result.gameplayCompletionist));
   }
 
 }

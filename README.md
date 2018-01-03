@@ -2,6 +2,8 @@
 
 ![Latest Build Status](https://api.travis-ci.org/ckatzorke/piletron3000.svg?branch=master)
 
+Check version deployed to [gh-pages](http://github.katzorke.io/piletron3000)
+
 A side project to visualize/materialize your inevitable pile of shame, every grown up, working/parenting person knows.
 It uses data from [Howlongtobeat](https://howlongtobeat.com), packed in a serverless function hosted on [Stdlib](https://stdlib.com) using my own library [howlongtobeat](https://github.com/ckatzorke/howlongtobeat).
 

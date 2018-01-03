@@ -1,6 +1,24 @@
 <div *ngIf="entries.length === 0">
   Add games to your pile of shame above, using the search function.
 </div>
+<div *ngIf="entries.length !== 0">
+  <div class="card">
+    <div class="card-content">
+      <div class="media">
+        <div class="media-left title is-1">
+          {{ entries.length }}
+        </div>
+        <div class="media-content">
+          <p class="title is-4">
+            <i class="far fa-clock"></i>
+            <span [innerHTML]="showGameplayTime()"></span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div *ngFor="let pile of entries">
   {{ pile.name }}
 </div>

@@ -9,7 +9,7 @@ import { PileEntry } from './pile.model';
 })
 export class PileComponent implements OnInit {
 
-  entries: Array<PileEntry = new Array<PileEntry>();
+  entries: Array<PileEntry> = new Array<PileEntry>();
 
   constructor(private pileService: PileService) { }
 

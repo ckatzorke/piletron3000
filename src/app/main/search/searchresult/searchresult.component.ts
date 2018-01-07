@@ -13,9 +13,27 @@ export class SearchresultComponent implements OnInit {
 
   @Input() result: SearchResult;
 
+  buttontext = 'Add to pile';
+  disabled = false;
+
   constructor(private pileService: PileService) { }
 
   ngOnInit() {
+    this.pileService.updates.subscribe((id: string) => {
+      if (id === this.result.id) {
+        this.disable();
+      }
+    });
+  }
+
+  disable() {
+    this.buttontext = 'Added';
+    this.disabled = true;
+  }
+
+  isDisabled() {
+    // check if in pile, currently no persistent pile
+    return this.disabled;
   }
 
   propability() {
@@ -34,7 +52,8 @@ export class SearchresultComponent implements OnInit {
       <strong>${this.result.gameplayCompletionist}</strong> hours to beat this game`;
   }
 
-  addToPile() {
+  addToPile(event) {
+    this.buttontext = 'Adding...';
     this.pileService.add(
       new PileEntry(this.result.id, this.result.name, this.result.imageUrl, this.result.gameplayMain, this.result.gameplayCompletionist));
   }

@@ -4,11 +4,11 @@ export class PileService {
 
   entries: Array<PileEntry> = new Array<PileEntry>();
 
-  updates = new EventEmitter<void>();
+  updates = new EventEmitter<string>();
 
   add(pileEntry: PileEntry) {
     this.entries.push(pileEntry);
-    this.updates.emit();
+    this.updates.emit(pileEntry.id);
   }
 
   getEntries(): Array<PileEntry> {

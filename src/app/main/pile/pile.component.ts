@@ -19,6 +19,24 @@ export class PileComponent implements OnInit {
     });
   }
 
+  showGameplayTimeDays(): string {
+    const time = Math.floor(this.sumCompletionist() / 24);
+    return time + ' day' + this.suffix(time);
+  }
+
+  showGameplayTimeHours(): string {
+    const time = this.sumCompletionist() % 24;
+    return time + ' hour' + this.suffix(time);
+  }
+
+  suffix(time) {
+    let suffix = '';
+    if (time !== 1) {
+      suffix = 's';
+    }
+    return suffix;
+  }
+
   showGameplayTime() {
     const main = this.sumMain();
     const complete = this.sumCompletionist();

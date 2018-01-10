@@ -7,14 +7,33 @@
       <div class="media">
         <div class="media-left is-center">
           <h1 class=" title is-1">{{ entries.length }}</h1>
-          Games
+          # of games
         </div>
         <div class="media-content">
-          <p class="title is-4">
-            <i class="far fa-clock"></i>
-            <span [innerHTML]="showGameplayTime()"></span>
-          </p>
+          <div class="columns is-mobile">
+            <div class="column is-center">
+              <p class="title is-2">
+                <i class="far fa-calendar-alt"></i>
+                <br>
+              </p>
+              <p class="title is-4">
+                {{showGameplayTimeDays()}}
+              </p>
+            </div>
+            <div class="column is-center">
+              <p class="title is-2">
+                <i class="far fa-clock"></i>
+                <br>
+              </p>
+              <p class="title is-4">
+                {{showGameplayTimeHours()}}
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="content">
+        <span [innerHTML]="showGameplayTime()"></span>"
       </div>
     </div>
   </div>

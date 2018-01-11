@@ -5,11 +5,10 @@ node_js:
 cache:
   directories:
     - "node_modules"
-before_deploy: "ng build --prod
+before_deploy: "ng build --prod"
 deploy:
   provider: surge
   skip_cleanup: true
-  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
   project: ./dist
   domain: piletron3000.surge.sh
   on:

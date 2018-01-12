@@ -1,5 +1,5 @@
 <div *ngIf="entries.length === 0">
-  Add games to your pile of shame above, using the search function.
+  Add games to your pile of shame, using the search function.
 </div>
 <div *ngIf="entries.length !== 0">
   <div class="card">
@@ -12,20 +12,20 @@
         <div class="media-content">
           <div class="columns is-mobile">
             <div class="column is-center">
-              <span class="title is-2">
+              <span class="title is-3">
                 <i class="far fa-calendar-alt"></i>
-                <br>
               </span>
-              <span class="title is-4">
+              <br>
+              <span class="title is-5">
                 {{showGameplayTimeDays()}}
               </span>
             </div>
             <div class="column is-center">
-              <span class="title is-2">
+              <span class="title is-3">
                 <i class="far fa-clock"></i>
                 <br>
               </span>
-              <span class="title is-4">
+              <span class="title is-5">
                 {{showGameplayTimeHours()}}
               </span>
             </div>

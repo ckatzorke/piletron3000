@@ -10,6 +10,14 @@
 
 .is-center{
   text-align: center;
+  vertical-align: middle;
+}
+.bg-dark {
+  background-color: #b1b1b1;
+}
+
+img.logo {
+  max-height: 72px;
 }
 
 .pixel {

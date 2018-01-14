@@ -1,14 +1,30 @@
 import { PileEntry } from './pile.model';
 import { EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+
+@Injectable()
 export class PileService {
 
   entries: Array<PileEntry> = new Array<PileEntry>();
-
   updates = new EventEmitter<string>();
 
+  pileCollection: AngularFirestoreCollection<PileEntry>;
+  collectionEntries: Observable<any[]>;
+
+  constructor(private firestore: AngularFirestore) {
+    this.pileCollection = this.firestore.collection('users').doc('ckatzorke@gmail.com').collection('pile');
+    this.collectionEntries = this.firestore.collection('users').doc('ckatzorke@gmail.com').collection('pile').valueChanges();
+    this.collectionEntries.subscribe((e) => {
+      this.entries = e;
+      console.log(e);
+      this.updates.emit('0');
+    });
+  }
+
   add(pileEntry: PileEntry) {
-    this.entries.push(pileEntry);
-    this.updates.emit(pileEntry.id);
+    this.pileCollection.add({ ...pileEntry });
   }
 
   getEntries(): Array<PileEntry> {

@@ -14,6 +14,13 @@ import { SearchService } from './main/search/search.service';
 import { SearchresultComponent } from './main/search/searchresult/searchresult.component';
 import { PileService } from './main/pile/pile.service';
 import { PileComponent } from './main/pile/pile.component';
+import { PersonalizeComponent } from './personalize/personalize.component';
+import { environment } from '../environments/environment';
+
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 
 @NgModule({
@@ -25,13 +32,17 @@ import { PileComponent } from './main/pile/pile.component';
     MainComponent,
     SearchComponent,
     SearchresultComponent,
-    PileComponent
+    PileComponent,
+    PersonalizeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   providers: [
     SearchService,

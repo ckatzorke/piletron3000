@@ -9,7 +9,7 @@ import * as firebase from 'firebase/app';
 })
 export class PersonalizeComponent implements OnInit {
 
-  constructor(private fauth: AngularFireAuth) { }
+  constructor(public fauth: AngularFireAuth) { }
 
   ngOnInit() {
     console.log(this.fauth.authState);

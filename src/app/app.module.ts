@@ -33,7 +33,14 @@ import { PileComponent } from './main/pile/pile.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [SearchService, PileService],
+  providers: [
+    SearchService,
+    PileService,
+    { provide: 'WINDOW', useFactory: getWindow }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+export function getWindow() {
+  return (typeof window !== 'undefined') ? window : null;
+}

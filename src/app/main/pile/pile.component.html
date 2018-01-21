@@ -1,44 +1,46 @@
-<div *ngIf="entries.length === 0">
-  Add games to your pile of shame, using the search function.
-</div>
-<div *ngIf="entries.length !== 0">
-  <div class="card">
-    <div class="card-content">
-      <div class="media">
-        <div class="media-left is-center">
-          <h1 class=" title is-1">{{ entries.length }}</h1>
-          # of games
-        </div>
-        <div class="media-content" style="overflow: unset">
-          <div class="columns is-mobile">
-            <div class="column is-center">
-              <span class="title is-3">
-                <i class="far fa-calendar-alt"></i>
-              </span>
-              <br>
-              <span class="title is-5">
-                {{showGameplayTimeDays()}}
-              </span>
-            </div>
-            <div class="column is-center">
-              <span class="title is-3">
-                <i class="far fa-clock"></i>
+<div class="block" id="pile">
+  <div *ngIf="entries.length === 0">
+    Add games to your pile of shame, using the search function.
+  </div>
+  <div *ngIf="entries.length !== 0">
+    <div class="card">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left is-center">
+            <h1 class=" title is-1">{{ entries.length }}</h1>
+            # of games
+          </div>
+          <div class="media-content" style="overflow: unset">
+            <div class="columns is-mobile">
+              <div class="column is-center">
+                <span class="title is-3">
+                  <i class="far fa-calendar-alt"></i>
+                </span>
                 <br>
-              </span>
-              <span class="title is-5">
-                {{showGameplayTimeHours()}}
-              </span>
+                <span class="title is-5">
+                  {{showGameplayTimeDays()}}
+                </span>
+              </div>
+              <div class="column is-center">
+                <span class="title is-3">
+                  <i class="far fa-clock"></i>
+                  <br>
+                </span>
+                <span class="title is-5">
+                  {{showGameplayTimeHours()}}
+                </span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="content">
-        <span [innerHTML]="showGameplayTime()"></span>"
+        <div class="content">
+          <span [innerHTML]="showGameplayTime()"></span>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div *ngFor="let pile of entries">
-  {{ pile.name }}
+  <div *ngFor="let pile of entries">
+    {{ pile.name }}
+  </div>
 </div>

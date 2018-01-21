@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { SearchResult } from '../searchresult.model';
 import { Input } from '@angular/core';
 import { PileService } from '../../pile/pile.service';
 import { PileEntry } from '../../pile/pile.model';
+import { Window } from '../../../shared/window';
 
 @Component({
   selector: 'app-searchresult',
@@ -16,7 +17,7 @@ export class SearchresultComponent implements OnInit {
   buttontext = 'Add to pile';
   disabled = false;
 
-  constructor(private pileService: PileService) { }
+  constructor(private pileService: PileService, @Inject('WINDOW') private window: any) { }
 
   ngOnInit() {
     this.pileService.updates.subscribe((id: string) => {
@@ -54,6 +55,9 @@ export class SearchresultComponent implements OnInit {
 
   addToPile(event) {
     this.buttontext = 'Adding...';
+    const element = this.window.document.getElementById('pile');
+    element.scrollIntoView({behavior: 'smooth'/*, block: "end", inline: "nearest"*/ });
+
     this.pileService.add(
       new PileEntry(this.result.id, this.result.name, this.result.imageUrl, this.result.gameplayMain, this.result.gameplayCompletionist));
   }

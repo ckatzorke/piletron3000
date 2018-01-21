@@ -3,7 +3,6 @@ import { SearchResult } from '../searchresult.model';
 import { Input } from '@angular/core';
 import { PileService } from '../../pile/pile.service';
 import { PileEntry } from '../../pile/pile.model';
-import { Window } from '../../../shared/window';
 
 @Component({
   selector: 'app-searchresult',

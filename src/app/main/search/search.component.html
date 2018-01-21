@@ -16,7 +16,14 @@
     No results. Please use search to find games you own, and have not yet played...
   </div>
   <div *ngIf="searchResults.length > 0">
-    <div class="is-center">{{ searchResults.length }} results found </div>
+    <article class="message is-small is-primary">
+      <div class="message-header">
+        <p>{{ searchResults.length }} results found for
+          <i>"{{searchTerm}}"</i>
+        </p>
+        <button class="delete is-small" (click)="onResetSearch()"></button>
+      </div>
+    </article>
     <div *ngFor="let result of searchResults" class="container is-fluid">
       <app-searchresult [result]="result"></app-searchresult>
     </div>

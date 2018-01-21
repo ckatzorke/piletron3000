@@ -30,4 +30,9 @@ export class SearchComponent implements OnInit {
     }
   }
 
+  onResetSearch() {
+    this.searchTerm = '';
+    this.searchResults = [];
+  }
+
 }

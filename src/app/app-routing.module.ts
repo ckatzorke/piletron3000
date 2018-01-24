@@ -6,10 +6,10 @@ import { PersonalizeComponent } from './personalize/personalize.component';
 
 
 const appRoutes: Routes = [
-  { path: '', component: MainComponent },
-  { path: 'pzn', component: PersonalizeComponent },
-  { path: 'about', component: AboutComponent },
-  { path: '**', redirectTo: ''}
+  { path: 'main', pathMatch: 'full', component: MainComponent },
+  { path: 'pzn', pathMatch: 'full', component: PersonalizeComponent },
+  { path: 'about', pathMatch: 'full', component: AboutComponent },
+  { path: '**', pathMatch: 'full', redirectTo: 'main' }
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
 export class PileEntry {
   constructor(
-    public id: string,
+    public hltb_id: string,
     public name: string,
     public imageUrl: string,
     public gameplayMain: number,

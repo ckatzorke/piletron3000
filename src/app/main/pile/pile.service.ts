@@ -8,7 +8,7 @@ export class PileService {
 
   add(pileEntry: PileEntry) {
     this.entries.push(pileEntry);
-    this.updates.emit(pileEntry.id);
+    this.updates.emit(pileEntry.hltb_id);
   }
 
   getEntries(): Array<PileEntry> {

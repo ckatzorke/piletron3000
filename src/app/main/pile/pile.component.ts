@@ -1,22 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PileService } from './pile.service';
 import { PileEntry } from './pile.model';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-pile',
   templateUrl: './pile.component.html',
   styleUrls: ['./pile.component.css']
 })
-export class PileComponent implements OnInit {
+export class PileComponent implements OnInit, OnDestroy {
 
   entries: Array<PileEntry> = new Array<PileEntry>();
+  subscription: Subscription;
 
   constructor(private pileService: PileService) { }
 
   ngOnInit() {
-    this.pileService.updates.subscribe(() => {
+    this.subscription = this.pileService.updates.subscribe(() => {
       this.entries = this.pileService.getEntries();
     });
+    this.entries = this.pileService.getEntries();
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   showGameplayTimeDays(): string {

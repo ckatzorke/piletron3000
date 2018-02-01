@@ -2,6 +2,10 @@ import { PileEntry } from './pile.model';
 import { EventEmitter } from '@angular/core';
 export class PileService {
 
+  constructor() {
+    console.log('new pileservice....');
+  }
+
   entries: Array<PileEntry> = new Array<PileEntry>();
 
   updates = new EventEmitter<string>();

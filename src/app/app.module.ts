@@ -21,6 +21,7 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { MyPileComponent } from './mypile/mypile.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     SearchComponent,
     SearchresultComponent,
     PileComponent,
-    PersonalizeComponent
+    PersonalizeComponent,
+    MyPileComponent
   ],
   imports: [
     BrowserModule,

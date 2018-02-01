@@ -1,0 +1,40 @@
+<section class="section hero is-white is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <div class="block">
+          <h1 class="title pixel">Compare</h1>
+          <div>
+            So, you have a pile. Alright. But what does that mean? How long does it take to beat it? What else could you do during this time? And most important: How does it compare to others....
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+  <div class="container">
+    <div *ngIf="entries?.length === 0">
+      Add games to your pile of shame, using the search function.
+    </div>
+    <div *ngIf="entries?.length !== 0">
+      <div *ngFor="let pile of entries" class="card">
+        <div class="card-content">
+          <div class="media">
+            <div class="media-left">
+              <img src="{{ pile.imageUrl }}" alt="Cover of {{ pile.name }}" width="96px">
+            </div>
+            <div class="media-content">
+              <p class="title is-6">
+                <a href="https://howlongtobeat.com/game.php?id={{pile.hltb_id }}" target="_blank" rel="noopener">{{ pile.name }}&nbsp;
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+              </p>
+              <p>
+                Remove
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

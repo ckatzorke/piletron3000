@@ -10,6 +10,6 @@ deploy:
   provider: surge
   skip_cleanup: true
   project: ./dist
-  domain: piletron3000.surge.sh
+  domain: https://piletron3000.surge.sh
   on:
     branch: master

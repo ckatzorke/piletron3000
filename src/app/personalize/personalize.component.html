@@ -14,13 +14,17 @@
     </div>
   </div>
 </section>
-<section class="section" *ngIf="fauth.authState | async as user; else showLogin">
+<section class="section" *ngIf="user; else showLogin">
   <div class="container">
     <h2 class="title">Hello {{ user.displayName }}!</h2>
     <div class="columns">
       <div class="column is-one-quarter label">e-mail</div>
       <div class="column">{{ user.email }}</div>
     </div>
+    <div class="columns">
+        <div class="column is-one-quarter label">userid</div>
+        <div class="column">{{ user.email }}</div>
+      </div>
     <div class="block">
       <div>
         <button class="button" (click)="onLogout()"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</button>

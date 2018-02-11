@@ -1,26 +1,40 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
+import { UserService } from '../shared/user.service';
+import { User } from 'firebase/app';
+import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
+import { Subscription } from 'rxjs/Subscription';
+
 
 @Component({
   selector: 'app-personalize',
   templateUrl: './personalize.component.html',
   styleUrls: ['./personalize.component.css']
 })
-export class PersonalizeComponent implements OnInit {
+export class PersonalizeComponent implements OnInit, OnDestroy {
 
-  constructor(public fauth: AngularFireAuth) { }
+  subscription: Subscription;
+
+  user: User;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
-    console.log(this.fauth.authState);
+    this.subscription = this.userService.user.subscribe((user) => {
+      this.user = user;
+      console.log(JSON.stringify(user));
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   onLogin() {
-    this.fauth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    this.userService.login();
   }
 
   onLogout() {
-    this.fauth.auth.signOut();
+    this.userService.logout();
   }
 
 }

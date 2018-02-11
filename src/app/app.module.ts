@@ -22,6 +22,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { MyPileComponent } from './mypile/mypile.component';
+import { UserService } from './shared/user.service';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { MyPileComponent } from './mypile/mypile.component';
   ],
   providers: [
     SearchService,
+    UserService,
     PileService,
     { provide: 'WINDOW', useFactory: getWindow }
   ],

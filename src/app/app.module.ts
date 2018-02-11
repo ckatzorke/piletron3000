@@ -18,8 +18,9 @@ import { PileComponent } from './main/pile/pile.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MyPileComponent } from './mypile/mypile.component';
 
+import { SigninGuard } from './shared/signin.guard';
 import { UserService } from './shared/user.service';
-import { PznGuard } from './shared/pzn.guard';
+import { UserResolver } from './shared/user-resolver.service';
 
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
@@ -54,7 +55,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     SearchService,
     UserService,
     PileService,
-    PznGuard,
+    SigninGuard,
+    UserResolver,
     { provide: 'WINDOW', useFactory: getWindow }
   ],
   bootstrap: [AppComponent]

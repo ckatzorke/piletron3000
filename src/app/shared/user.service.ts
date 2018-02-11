@@ -27,4 +27,8 @@ export class UserService {
     return this.fauth.auth.currentUser !== null;
   }
 
+  getCurrentUser(): User {
+    return this.fauth.auth.currentUser;
+  }
+
 }

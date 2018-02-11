@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../shared/user.service';
 import { User } from 'firebase/app';
-import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
-import { Subscription } from 'rxjs/Subscription';
+import { ActivatedRoute, Data } from '@angular/router';
 
 
 @Component({
@@ -10,25 +8,17 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit, OnDestroy {
+export class ProfileComponent implements OnInit {
 
-  subscription: Subscription;
+  private user: User;
 
-  user: User;
-
-  constructor(private userService: UserService) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.subscription = this.userService.user.subscribe((user) => {
-      this.user = user;
+    this.route.data.subscribe((data: Data) => {
+      this.user = data['user'];
     });
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
 
-  onLogout() {
-    this.userService.logout();
-  }
 }

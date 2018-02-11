@@ -1,0 +1,47 @@
+<div *ngIf="!user">
+  <section class="section hero is-white is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <div class="block">
+          <h1 class="title pixel">Please sign in</h1>
+          <div>
+            In order to use PileTron 3000&trade; properly, log in with your Google account. With this, the pile will be kept persistent.
+            <br> I won't do anything with your account data, and any usage of your authority (like using any APIs on your behalf
+            or similar) will be requested with a separate consent screen, you can always decide to revoke access.
+            <br> Also, you will be able to sign out, or completely delete any data associated with
+            <span class="pixel">PileTron 3000&trade;</span>.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <div class="block is-center spacer">
+        <button class="button is-info" (click)="onLogin()">
+          <i class="fab fa-google"></i>&nbsp;Login with Google</button>
+      </div>
+    </div>
+  </section>
+</div>
+<div *ngIf="user">
+  <section class="section hero is-white is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <div class="block">
+          <h1 class="title pixel">Welcome back, {{ user.displayName }}</h1>
+          <div>
+            Last visit:
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <div>
+        Following has happened during your last visit:
+      </div>
+    </div>
+  </section>
+</div>

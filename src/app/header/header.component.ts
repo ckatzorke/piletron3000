@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../shared/user.service';
 
 @Component({
   selector: 'app-header',
@@ -8,13 +9,17 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   burger = false;
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
   }
 
   toggleBurger() {
     this.burger = !this.burger;
+  }
+
+  onLogout() {
+    this.userService.logout();
   }
 
 }

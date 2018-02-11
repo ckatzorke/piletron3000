@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 import { MainComponent } from './main/main.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SearchComponent } from './main/search/search.component';
@@ -14,15 +15,16 @@ import { SearchService } from './main/search/search.service';
 import { SearchresultComponent } from './main/search/searchresult/searchresult.component';
 import { PileService } from './main/pile/pile.service';
 import { PileComponent } from './main/pile/pile.component';
-import { PersonalizeComponent } from './personalize/personalize.component';
+import { ProfileComponent } from './profile/profile.component';
+import { MyPileComponent } from './mypile/mypile.component';
+
+import { UserService } from './shared/user.service';
+import { PznGuard } from './shared/pzn.guard';
+
 import { environment } from '../environments/environment';
-
-
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { MyPileComponent } from './mypile/mypile.component';
-import { UserService } from './shared/user.service';
 
 
 @NgModule({
@@ -35,8 +37,9 @@ import { UserService } from './shared/user.service';
     SearchComponent,
     SearchresultComponent,
     PileComponent,
-    PersonalizeComponent,
-    MyPileComponent
+    ProfileComponent,
+    MyPileComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ import { UserService } from './shared/user.service';
     SearchService,
     UserService,
     PileService,
+    PznGuard,
     { provide: 'WINDOW', useFactory: getWindow }
   ],
   bootstrap: [AppComponent]

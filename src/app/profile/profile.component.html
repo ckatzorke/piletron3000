@@ -1,0 +1,31 @@
+<section class="section hero is-white is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <div class="block">
+          <h1 class="title pixel">Profile</h1>
+          <div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<section class="section">
+  <div class="container">
+    <h2 class="title">Hello {{ user.displayName }}!</h2>
+    <div class="columns">
+      <div class="column is-one-quarter label">e-mail</div>
+      <div class="column">{{ user.email }}</div>
+    </div>
+    <div class="columns">
+      <div class="column is-one-quarter label">userid</div>
+      <div class="column">{{ user.email }}</div>
+    </div>
+    <div class="block">
+      <div>
+        <button class="button" (click)="onLogout()">
+          <i class="fas fa-sign-out-alt"></i>&nbsp;Logout</button>
+      </div>
+    </div>
+  </div>
+</section>

@@ -12,14 +12,17 @@
 
   <div class="navbar-menu" [class.is-active]="burger">
     <div class="navbar-start">
+      <a class="navbar-item" routerLink="home" routerLinkActive="is-active">
+        Welcome
+      </a>
       <a class="navbar-item" routerLink="main" routerLinkActive="is-active">
         Size your Pile!
       </a>
       <a class="navbar-item" routerLink="mypile" routerLinkActive="is-active">
         Compare your Pile
       </a>
-      <a class="navbar-item" routerLink="pzn" routerLinkActive="is-active">
-        Personalize
+      <a class="navbar-item" routerLink="profile" routerLinkActive="is-active">
+        Profile
       </a>
     </div>
 
@@ -28,6 +31,9 @@
         About&nbsp;
         <i class="far fa-question-circle"></i>
       </a>
+      <a class="navbar-item" (click)="onLogout()">
+          <i class="fas fa-sign-out-alt"></i>
+        </a>
     </div>
   </div>
 </nav>

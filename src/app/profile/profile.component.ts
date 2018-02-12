@@ -10,7 +10,7 @@ import { ActivatedRoute, Data } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
 
-  private user: User;
+  user: User;
 
   constructor(private route: ActivatedRoute) { }
 

@@ -1,16 +1,17 @@
 <section class="section hero is-white is-bold">
-    <div class="hero-body">
-      <div class="container">
-        <div class="block">
-          <h1 class="title pixel">Compare</h1>
-          <div>
-            So, you have a pile. Alright. But what does that mean? How long does it take to beat it? What else could you do during this time? And most important: How does it compare to others....
-          </div>
+  <div class="hero-body">
+    <div class="container">
+      <div class="block">
+        <h1 class="title pixel">Compare</h1>
+        <div>
+          So, you have a pile. Alright. But what does that mean? How long does it take to beat it? What else could you do during this
+          time? And most important: How does it compare to others....
         </div>
       </div>
     </div>
-  </section>
-  <section class="section">
+  </div>
+</section>
+<section class="section">
   <div class="container">
     <div *ngIf="entries?.length === 0">
       Add games to your pile of shame, using the search function.
@@ -27,6 +28,9 @@
                 <a href="https://howlongtobeat.com/game.php?id={{pile.hltb_id }}" target="_blank" rel="noopener">{{ pile.name }}&nbsp;
                   <i class="fas fa-external-link-alt"></i>
                 </a>
+              </p>
+              <p>
+                Main: {{ pile.gameplayMain }} - Completionist {{ pile.gameplayCompletionist }}
               </p>
               <p>
                 Remove

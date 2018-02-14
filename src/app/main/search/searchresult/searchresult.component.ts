@@ -1,8 +1,8 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { SearchResult } from '../searchresult.model';
-import { Input } from '@angular/core';
-import { PileService } from '../../pile/pile.service';
 import { PileEntry } from '../../pile/pile.model';
+import { PileService } from '../../pile/pile.service';
+import { SearchResult } from '../searchresult.model';
+import { Component, OnInit, Inject } from '@angular/core';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-searchresult',
@@ -32,8 +32,7 @@ export class SearchresultComponent implements OnInit {
   }
 
   isDisabled() {
-    // check if in pile, currently no persistent pile
-    return this.disabled;
+    return this.disabled || this.pileService.getEntries().filter((entry: PileEntry) => entry.hltb_id === this.result.id).length > 0;
   }
 
   propability() {
@@ -55,7 +54,7 @@ export class SearchresultComponent implements OnInit {
   addToPile(event) {
     this.buttontext = 'Adding...';
     const element = this.window.document.getElementById('pile');
-    element.scrollIntoView({behavior: 'smooth'/*, block: "end", inline: "nearest"*/ });
+    element.scrollIntoView({ behavior: 'smooth'/*, block: "end", inline: "nearest"*/ });
 
     this.pileService.add(
       new PileEntry(this.result.id, this.result.name, this.result.imageUrl, this.result.gameplayMain, this.result.gameplayCompletionist));

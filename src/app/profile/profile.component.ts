@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'firebase/app';
 import { ActivatedRoute, Data } from '@angular/router';
+import { User } from 'firebase/app';
+import { Profile } from '../shared/profile.model';
 
 
 @Component({
@@ -10,6 +11,8 @@ import { ActivatedRoute, Data } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
 
+  profile: Profile;
+
   user: User;
 
   constructor(private route: ActivatedRoute) { }
@@ -17,6 +20,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.route.data.subscribe((data: Data) => {
       this.user = data['user'];
+      this.profile = data['profile'];
     });
   }
 

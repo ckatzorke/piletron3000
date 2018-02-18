@@ -26,6 +26,7 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { ProfileResolver } from './shared/profile-resolver.service';
 
 
 @NgModule({
@@ -57,6 +58,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     PileService,
     SigninGuard,
     UserResolver,
+    ProfileResolver,
     { provide: 'WINDOW', useFactory: getWindow }
   ],
   bootstrap: [AppComponent]

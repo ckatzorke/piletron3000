@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { User } from 'firebase/app';
 import { Subscription } from 'rxjs/Subscription';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
+import { Profile } from '../shared/profile.model';
 
 @Component({
   selector: 'app-welcome',
@@ -12,15 +13,18 @@ import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 })
 export class WelcomeComponent implements OnInit, OnDestroy {
   subscription: Subscription;
-  user: User;
+  profile: Profile;
 
   constructor(private userService: UserService) {
-
   }
+
   ngOnInit() {
     this.subscription = this.userService.user.subscribe((user) => {
-      this.user = user;
-      console.log(user);
+      if (user) {
+        this.userService.getCurrentProfile().then((p) => this.profile = p);
+      } else {
+        this.profile = null;
+      }
     });
   }
 

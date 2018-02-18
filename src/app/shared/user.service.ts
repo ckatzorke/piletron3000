@@ -62,13 +62,31 @@ export class UserService {
   private loadProfile(email: String): Promise<Profile> {
     const promise = new Promise<Profile>((res, rej) => {
       this.profileDoc = this.store.doc<Profile>(`users/${email}`);
-      this.profile = this.profileDoc.valueChanges();
-      this.profile.subscribe((data) => {
-        this.profileData = data;
-        res(data);
+      this.createDocIfNecessary(this.profileDoc).then(() => {
+        this.profile = this.profileDoc.valueChanges();
+        this.profile.subscribe((data) => {
+          this.profileData = data;
+          res(data);
+        });
       });
     });
     return promise;
 
+  }
+
+  private async createDocIfNecessary(doc: AngularFirestoreDocument<Profile>): Promise<void> {
+    const promise = new Promise<void>((res, rej) => {
+      doc.ref.get().then((d) => {
+        if (!d.exists) {
+          const p = new Profile();
+          p.email = this.getCurrentUser().email;
+          p.displayName = this.getCurrentUser().displayName;
+          doc.set({ ...p }).then(() => res());
+        } else {
+          res();
+        }
+      });
+    });
+    return promise;
   }
 }

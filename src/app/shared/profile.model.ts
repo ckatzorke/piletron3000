@@ -5,4 +5,5 @@ export class Profile {
   signin: Date;
   signout: Date;
   displayName: String;
+  gamertype: Number;
 }

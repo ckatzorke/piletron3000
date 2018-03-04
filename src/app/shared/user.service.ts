@@ -20,9 +20,11 @@ export class UserService {
     private router: Router) {
     this.profile = new Subject<Profile>();
     this.user = fauth.authState;
-    this.user.subscribe(() => {
-      if (this.isLoggedIn()) {
-        this.loadProfile(this.getCurrentUser());
+    this.user.subscribe((user) => {
+      if (user != null) {
+        this.loadProfile(this.getCurrentUser()).then((p) => { this.profile.next(p); });
+      } else {
+        this.profile.next(null);
       }
     });
   }

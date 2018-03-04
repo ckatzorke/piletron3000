@@ -28,20 +28,61 @@
   <section class="section hero is-white is-bold">
     <div class="hero-body">
       <div class="container">
-        <div class="block">
+        <div class="block" *ngIf="profile.lastSignin">
           <h1 class="title pixel">Welcome back, {{ profile.displayName }}</h1>
-          <div>
-            Last visit: {{ profile.lastSignin }}
+          <div>Your last sign in was {{ profile.lastSignin | date:'short'}}
           </div>
         </div>
+        <div class="block" *ngIf="!profile.lastSignin">
+          <h1 class="title pixel">Welcome, {{ profile.displayName }}</h1>
+          <div>Congratulations! Your first sign in.
+          </div>
+        </div>
+        <p>Get started with <strong>PileTron 3000&trade;</strong>.</p>
       </div>
     </div>
   </section>
   <section>
-    <div class="container">
-      <div>
-        Following has happened during your last visit:
+    <div class="container spacer-top spacer-bottom">
+      <div class="columns">
+        <div class="column">
+          <div class="card">
+            <div class="card-content">
+              <p class="title">
+                “There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors.”
+              </p>
+              <p class="subtitle">
+                Jeff Atwood
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="card-content">
+              <p class="title">
+                “There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors.”
+              </p>
+              <p class="subtitle">
+                Jeff Atwood
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="card-content">
+              <p class="title">
+                “There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors.”
+              </p>
+              <p class="subtitle">
+                Jeff Atwood
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
+
     </div>
   </section>
 </div>

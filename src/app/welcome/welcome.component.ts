@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../shared/user.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { User } from 'firebase/app';
-import { Subscription } from 'rxjs/Subscription';
-import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
+import { UserService } from '../shared/user.service';
 import { Profile } from '../shared/profile.model';
 
 @Component({
@@ -18,7 +18,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
   constructor(private userService: UserService) {
   }
 
-  ngOnInit() {
+   ngOnInit() {
     this.subscription = this.userService.user.subscribe((user) => {
       if (user) {
         this.userService.getCurrentProfile().then((p) => this.profile = p);
@@ -31,6 +31,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
+
   onLogin() {
     this.userService.login();
   }

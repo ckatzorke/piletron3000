@@ -16,6 +16,13 @@
 .spacer {
   margin: 20px;
 }
+
+.spacer-top {
+  margin-top: 20px;
+}
+.spacer-bottom {
+  margin-bottom: 20px;
+}
 .label {
   color: #b1b1b1;
   font-style: italic;

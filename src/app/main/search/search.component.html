@@ -8,8 +8,8 @@
     </a>
   </div>
 </div>
-<div class="block is-center">
-  <img *ngIf="searching" height="100px" width="100px" class="is-center" src="assets/images/Pacman.svg" alt="searching...">
+<div *ngIf="searching" class="block is-center">
+  <img  height="100px" width="100px" class="is-center" src="assets/images/Pacman.svg" alt="searching...">
 </div>
 <div class="block">
   <div *ngIf="searchResults.length === 0">

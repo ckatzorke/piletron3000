@@ -1,14 +1,11 @@
 @font-face {
   font-family: '04b08';
-  src:url('assets/fonts/04b08.ttf.woff') format('woff'),
-      url('assets/fonts/04b08.ttf.svg#04b08') format('svg'),
-      url('assets/fonts/04b08.ttf.eot'),
-      url('assets/fonts/04b08.ttf.eot?#iefix') format('embedded-opentype');
+  src: url('assets/fonts/04b08.ttf.woff') format('woff'), url('assets/fonts/04b08.ttf.svg#04b08') format('svg'), url('assets/fonts/04b08.ttf.eot'), url('assets/fonts/04b08.ttf.eot?#iefix') format('embedded-opentype');
   font-weight: normal;
   font-style: normal;
 }
 
-.is-center{
+.is-center {
   text-align: center;
   vertical-align: middle;
 }
@@ -20,13 +17,16 @@
 .spacer-top {
   margin-top: 20px;
 }
+
 .spacer-bottom {
   margin-bottom: 20px;
 }
+
 .label {
   color: #b1b1b1;
   font-style: italic;
 }
+
 .bg-dark {
   background-color: #b1b1b1;
 }
@@ -39,6 +39,30 @@ img.logo {
   font-family: '04b08';
 }
 
+.img-placeholder {
+  min-width: 96px;
+  min-height: 120px;
+  background-color: silver;
+}
 
+.title-placeholder {
+  min-width: 180px;
+  max-width: 300px;
+  min-height: 12px;
+  margin-bottom: 5px;
+  background-color: silver;
+}
+
+.subtitle-placeholder {
+  margin-top: 3px;
+  min-width: 120px;
+  max-width: 240px;
+  min-height: 10px;
+  background-color: silver;
+}
+
+.is-placeholder {
+  background-color: silver;
+}
 
 @import "~bulma/css/bulma.css";

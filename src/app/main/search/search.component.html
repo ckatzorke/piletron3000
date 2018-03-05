@@ -9,13 +9,53 @@
   </div>
 </div>
 <div *ngIf="searching" class="block is-center">
-  <img  height="100px" width="100px" class="is-center" src="assets/images/Pacman.svg" alt="searching...">
+  <article class="message is-small">
+    <div class="message-header">
+      <p>&nbsp;</p>
+    </div>
+  </article>
+  <div class="container is-fluid">
+    <div class="card">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left">
+            <div class="img-placeholder"></div>
+          </div>
+          <div class="media-content">
+            <div class="title-placeholder">
+            </div>
+            <div class="subtitle-placeholder">
+            </div>
+            <div class="subtitle-placeholder">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left">
+            <div class="img-placeholder"></div>
+          </div>
+          <div class="media-content">
+            <div class="title-placeholder">
+            </div>
+            <div class="subtitle-placeholder">
+            </div>
+            <div class="subtitle-placeholder">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="block">
   <div *ngIf="searchResults.length === 0">
     No results. Please use search to find games you own, and have not yet played...
   </div>
-  <div *ngIf="searchResults.length > 0">
+  <div *ngIf="searchResults.length > 0 && !searching">
     <article class="message is-small is-primary">
       <div class="message-header">
         <p>{{ searchResults.length }} results found for

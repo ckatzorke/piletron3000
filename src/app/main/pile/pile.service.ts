@@ -34,6 +34,10 @@ export class PileService {
     docref.set({ ...pileEntry }).then(() => console.log('Written')).catch((e) => console.error(e));
   }
 
+  remove(id: string) {
+    this.pileCollection.doc(id).delete().then(() => console.log('Deleted')).catch((e) => console.error(e));
+  }
+
 
   // full work weeks (40 hrs)
   // bingewatching

@@ -25,19 +25,26 @@
             </div>
             <div class="media-content">
               <p class="title is-6">
-                <a href="https://howlongtobeat.com/game.php?id={{pile.hltb_id }}" target="_blank" rel="noopener">{{ pile.name }}&nbsp;
-                  <i class="fas fa-external-link-alt"></i>
-                </a>
+                  {{ pile.name }}
               </p>
               <p>
                 Main: {{ pile.gameplayMain }} - Completionist {{ pile.gameplayCompletionist }}
               </p>
-              <p>
-                Remove
-              </p>
             </div>
           </div>
         </div>
+        <footer class="card-footer">
+            <p class="card-footer-item">
+              <span>
+                <a href="https://howlongtobeat.com/game.php?id={{pile.hltb_id }}" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i>&nbsp;View on Howlongtobeat</a>
+              </span>
+            </p>
+            <p class="card-footer-item">
+              <span>
+                <a (click)="onRemove(pile.id)"><i class="far fa-trash-alt"></i>&nbsp;Remove from pile.</a>
+              </span>
+            </p>
+          </footer>
       </div>
     </div>
   </div>

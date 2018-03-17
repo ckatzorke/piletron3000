@@ -27,6 +27,9 @@ export class MyPileComponent implements OnInit, OnDestroy {
     this.pileSubscription.unsubscribe();
   }
 
+  onRemove(id) {
+    this.pileService.remove(id);
+  }
 
 
 }

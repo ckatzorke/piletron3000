@@ -13,28 +13,23 @@ import { Profile } from '../shared/profile.model';
 })
 export class WelcomeComponent implements OnInit, OnDestroy {
   usersubscription: Subscription;
-  profilesubscription: Subscription;
-  profile: Profile;
+  user: User;
 
   constructor(private userService: UserService) {
+    this.usersubscription = this.userService.user.subscribe((user) => {
+      this.user = user;
+    });
   }
 
   async ngOnInit() {
-    this.profilesubscription = this.userService.profile.subscribe((p) => { this.profile = p; });
-
-    //this.profile = await this.userService.getCurrentProfile();
-    //console.log("welcome profile", this.profile);
   }
 
   ngOnDestroy() {
-    this.profilesubscription.unsubscribe();
+    this.usersubscription.unsubscribe();
   }
 
   onLogin() {
     this.userService.login();
   }
 
-  onLogout() {
-    this.userService.logout();
-  }
 }

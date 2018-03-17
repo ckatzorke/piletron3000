@@ -19,11 +19,13 @@ export class SearchresultComponent implements OnInit {
   constructor(private pileService: PileService, @Inject('WINDOW') private window: any) { }
 
   ngOnInit() {
+    /*
     this.pileService.updates.subscribe((id: string) => {
       if (id === this.result.id) {
         this.disable();
       }
     });
+    */
   }
 
   disable() {
@@ -32,7 +34,8 @@ export class SearchresultComponent implements OnInit {
   }
 
   isDisabled() {
-    return this.disabled || this.pileService.getEntries().filter((entry: PileEntry) => entry.hltb_id === this.result.id).length > 0;
+    return false;
+    // this.disabled || this.pileService.getEntries().filter((entry: PileEntry) => entry.hltb_id === this.result.id).length > 0;
   }
 
   propability() {
@@ -57,7 +60,12 @@ export class SearchresultComponent implements OnInit {
     element.scrollIntoView({ behavior: 'smooth'/*, block: "end", inline: "nearest"*/ });
 
     this.pileService.add(
-      new PileEntry(this.result.id, this.result.name, this.result.imageUrl, this.result.gameplayMain, this.result.gameplayCompletionist));
+      new PileEntry(null, this.result.id,
+        this.result.name,
+        this.result.imageUrl,
+        this.result.gameplayMain,
+        this.result.gameplayCompletionist,
+        new Date()));
   }
 
 }

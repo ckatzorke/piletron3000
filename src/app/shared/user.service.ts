@@ -13,19 +13,13 @@ import { Subject } from 'rxjs/Subject';
 export class UserService {
 
   user: Observable<User>;
-  profile: Subject<Profile>;
 
   constructor(private fauth: AngularFireAuth,
     private store: AngularFirestore,
     private router: Router) {
-    this.profile = new Subject<Profile>();
     this.user = fauth.authState;
     this.user.subscribe((user) => {
-      if (user != null) {
-        this.loadProfile(this.getCurrentUser()).then((p) => { this.profile.next(p); });
-      } else {
-        this.profile.next(null);
-      }
+      //
     });
   }
 
@@ -34,7 +28,7 @@ export class UserService {
       this.loadProfile(p.user).then((profile) => {
         profile.lastSignin = profile.signin ? profile.signin : null;
         profile.signin = new Date();
-        this.store.doc<Profile>(`users/${p.user.uid}`).update(profile).then(() => this.profile.next(profile));
+        this.store.doc<Profile>(`users/${p.user.uid}`).update(profile);
       });
     });
   }
@@ -44,7 +38,6 @@ export class UserService {
     const signout = new Date();
     this.store.doc<Profile>(`users/${this.fauth.auth.currentUser.uid}`).update({ 'signout': signout }).then(() => {
       this.fauth.auth.signOut().then(() => {
-        this.profile.next(null);
         this.router.navigate(['/home']);
       });
     });

@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PileService } from '../main/pile/pile.service';
-import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
 import { PileEntry } from '../main/pile/pile.model';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-mypile',
@@ -10,20 +11,22 @@ import { PileEntry } from '../main/pile/pile.model';
 })
 export class MyPileComponent implements OnInit, OnDestroy {
 
-  entries: PileEntry[] = new Array<PileEntry>();
-  subscription: Subscription;
+  entries: Array<PileEntry>;
+  pileSubscription: Subscription;
 
   constructor(private pileService: PileService) { }
 
   ngOnInit() {
-    this.subscription = this.pileService.updates.subscribe(() => {
-      this.entries = this.pileService.getEntries();
+    this.entries = this.pileService.pileEntries;
+    this.pileSubscription = this.pileService.pile.subscribe((e) => {
+      this.entries = e;
     });
-    this.entries = this.pileService.getEntries();
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.pileSubscription.unsubscribe();
   }
+
+
 
 }

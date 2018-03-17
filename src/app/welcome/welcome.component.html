@@ -1,4 +1,4 @@
-<div *ngIf="!profile">
+<div *ngIf="!user">
   <section class="section hero is-white is-bold">
     <div class="hero-body">
       <div class="container">
@@ -24,17 +24,17 @@
     </div>
   </section>
 </div>
-<div *ngIf="profile">
+<div *ngIf="user">
   <section class="section hero is-white is-bold">
     <div class="hero-body">
       <div class="container">
-        <div class="block" *ngIf="profile.lastSignin">
-          <h1 class="title pixel">Welcome back, {{ profile.displayName }}</h1>
-          <div>Your last sign in was {{ profile.lastSignin | date:'short'}}
+        <div class="block" *ngIf="profile?.lastSignin">
+          <h1 class="title pixel">Welcome back, {{ profile?.displayName }}</h1>
+          <div>Your last sign in was {{ profile?.lastSignin | date:'short'}}
           </div>
         </div>
-        <div class="block" *ngIf="!profile.lastSignin">
-          <h1 class="title pixel">Welcome, {{ profile.displayName }}</h1>
+        <div class="block" *ngIf="!profile?.lastSignin">
+          <h1 class="title pixel">Welcome, {{ profile?.displayName }}</h1>
           <div>Congratulations! Your first sign in.
           </div>
         </div>

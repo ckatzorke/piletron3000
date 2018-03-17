@@ -1,22 +1,39 @@
 import { PileEntry } from './pile.model';
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+
+@Injectable()
 export class PileService {
 
-  constructor() {
+  pileCollection: AngularFirestoreCollection<PileEntry>;
+  pileEntries = new Array<PileEntry>();
+  pile = new Subject<Array<PileEntry>>();
+
+  constructor(private store: AngularFirestore, private auth: AngularFireAuth) {
+    this.pileCollection = this.store.collection<PileEntry>(`users/${this.auth.auth.currentUser.uid}/pile`);
+    this.pileCollection.snapshotChanges().subscribe((actions) => {
+      console.log('Got actions', actions);
+      this.pileEntries = actions.map((action) => {
+        const data = action.payload.doc.data();
+        const id = action.payload.doc.id;
+        console.log(`type ${action.type}, id ${id}, data ${data}`);
+        this.pileEntries.push(data as PileEntry);
+        return data as PileEntry;
+      });
+      this.pile.next(this.pileEntries);
+    })
   }
-
-  entries: Array<PileEntry> = new Array<PileEntry>();
-
-  updates = new EventEmitter<string>();
 
   add(pileEntry: PileEntry) {
-    this.entries.push(pileEntry);
-    this.updates.emit(pileEntry.hltb_id);
+    const docref = this.pileCollection.ref.doc();
+    const id = docref.id;
+    pileEntry.id = id;
+    docref.set({ ...pileEntry }).then(() => console.log('Written')).catch((e) => console.error(e));
   }
 
-  getEntries(): Array<PileEntry> {
-    return this.entries;
-  }
 
   // full work weeks (40 hrs)
   // bingewatching
@@ -39,3 +56,5 @@ export class PileService {
 
 
 }
+
+export interface PileEntryId extends PileEntry { id: string; }

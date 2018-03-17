@@ -1,10 +1,12 @@
 export class PileEntry {
   constructor(
+    public id: string,
     public hltb_id: string,
     public name: string,
     public imageUrl: string,
     public gameplayMain: number,
-    public gameplayCompletionist: number
+    public gameplayCompletionist: number,
+    public added: Date
   ) {
     if (gameplayMain === 0 && gameplayCompletionist !== 0) {
       console.log('No main play time, setting to ' + gameplayCompletionist);

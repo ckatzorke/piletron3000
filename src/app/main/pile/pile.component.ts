@@ -82,5 +82,3 @@ export class PileComponent implements OnInit, OnDestroy {
     }
   }
 }
-
-}

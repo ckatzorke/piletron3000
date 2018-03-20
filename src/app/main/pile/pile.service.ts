@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import { User } from 'firebase/app';
 
 @Injectable()
 export class PileService {
@@ -13,18 +14,23 @@ export class PileService {
   pile = new Subject<Array<PileEntry>>();
 
   constructor(private store: AngularFirestore, private auth: AngularFireAuth) {
-    this.pileCollection = this.store.collection<PileEntry>(`users/${this.auth.auth.currentUser.uid}/pile`);
-    this.pileCollection.snapshotChanges().subscribe((actions) => {
-      console.log('Got actions', actions);
-      this.pileEntries = actions.map((action) => {
-        const data = action.payload.doc.data();
-        const id = action.payload.doc.id;
-        console.log(`type ${action.type}, id ${id}, data ${data}`);
-        this.pileEntries.push(data as PileEntry);
-        return data as PileEntry;
-      });
-      this.pile.next(this.pileEntries);
-    })
+    auth.authState.subscribe((user: User) => {
+      if (user) {
+        this.pileCollection = this.store.collection<PileEntry>(`users/${this.auth.auth.currentUser.uid}/pile`);
+        this.pileCollection.snapshotChanges().subscribe((actions) => {
+          console.log('Got actions', actions);
+          this.pileEntries = actions.map((action) => {
+            const data = action.payload.doc.data();
+            const id = action.payload.doc.id;
+            console.log(`type ${action.type}, id ${id}, data ${data}`);
+            this.pileEntries.push(data as PileEntry);
+            return data as PileEntry;
+          });
+          this.pile.next(this.pileEntries);
+        });
+      }
+    });
+
   }
 
   add(pileEntry: PileEntry) {

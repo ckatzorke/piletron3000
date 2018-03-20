@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
-import { WelcomeComponent } from './welcome/welcome.component';
 import { MainComponent } from './main/main.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SearchComponent } from './main/search/search.component';
@@ -40,8 +39,7 @@ import { ProfileResolver } from './shared/profile-resolver.service';
     SearchresultComponent,
     PileComponent,
     ProfileComponent,
-    MyPileComponent,
-    WelcomeComponent
+    MyPileComponent
   ],
   imports: [
     BrowserModule,

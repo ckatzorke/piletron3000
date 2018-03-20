@@ -4,22 +4,23 @@ import { AboutComponent } from './about/about.component';
 import { MainComponent } from './main/main.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MyPileComponent } from './mypile/mypile.component';
-import { WelcomeComponent } from './welcome/welcome.component';
 import { SigninGuard } from './shared/signin.guard';
 import { UserResolver } from './shared/user-resolver.service';
 import { ProfileResolver } from './shared/profile-resolver.service';
 
 
 const appRoutes: Routes = [
-  { path: 'home', pathMatch: 'full', component: WelcomeComponent },
-  { path: 'main', pathMatch: 'full', component: MainComponent, canActivate: [SigninGuard] },
+  {
+    path: 'main', pathMatch: 'full', component: MainComponent
+  },
   { path: 'mypile', pathMatch: 'full', component: MyPileComponent, canActivate: [SigninGuard] },
-  { path: 'profile', pathMatch: 'full', component: ProfileComponent, canActivate: [SigninGuard], resolve: {
+  {
+    path: 'profile', pathMatch: 'full', component: ProfileComponent, canActivate: [SigninGuard], resolve: {
       user: UserResolver, profile: ProfileResolver
     }
   },
   { path: 'about', pathMatch: 'full', component: AboutComponent },
-  { path: '**', pathMatch: 'full', redirectTo: 'home' }
+  { path: '**', pathMatch: 'full', redirectTo: 'main' }
 ];
 
 @NgModule({

@@ -1,28 +1,58 @@
-<section class="section hero is-primary is-bold">
-  <div class="hero-body">
-    <div class="container">
-      <div class="block">
-        <h1 class="title pixel">PileTron 3000&trade;</h1>
-        <div>
-          Ever wondered how big your pile of shame is? How much time you would need to invest to beat the unplayed games?
+<div *ngIf="!user">
+  <section class="section hero is-white is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <div class="block">
+          <h1 class="title pixel">Please sign in</h1>
+          <div>
+            In order to use PileTron 3000&trade; properly, log in with your Google account. With this, the pile will be kept persistent.
+            <br> I won't do anything with your account data, and any usage of your authority (like using any APIs on your behalf
+            or similar) will be requested with a separate consent screen, you can always decide to revoke access.
+            <br> Also, you will be able to sign out, or completely delete any data associated with
+            <span class="pixel">PileTron 3000&trade;</span>.
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-<section class="section">
-  <div class="columns">
-    <div class="column">
-      <h2 class="title">Your Pile</h2>
-      <div>
-        <app-pile></app-pile>
+  </section>
+  <section>
+    <div class="container">
+      <div class="block is-center spacer">
+        <button class="button is-info" (click)="onLogin()">
+          <i class="fab fa-google"></i>&nbsp;Login with Google</button>
       </div>
     </div>
-    <div class="column">
-      <h2 class="title">Search for your game</h2>
-      <div>
-        <app-search></app-search>
+  </section>
+
+</div>
+<!-- logged in -->
+<div *ngIf="user">
+  <section class="section hero is-primary is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <div class="block">
+          <h1 class="title pixel">PileTron 3000&trade;</h1>
+          <div>
+            Ever wondered how big your pile of shame is? How much time you would need to invest to beat the unplayed games?
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+  <section class="section">
+    <div class="columns">
+      <div class="column">
+        <h2 class="title">Your Pile</h2>
+        <div>
+          <app-pile></app-pile>
+        </div>
+      </div>
+      <div class="column">
+        <h2 class="title">Search for your game</h2>
+        <div>
+          <app-search></app-search>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Data } from '@angular/router';
 import { User } from 'firebase/app';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import { UserService } from '../shared/user.service';
 import { Subscription } from 'rxjs/Subscription';
 

@@ -20,16 +20,20 @@ export class PileComponent implements OnInit, OnDestroy {
   constructor(private pileService: PileService) { }
 
   ngOnInit() {
-    this.entries = this.pileService.pileEntries;
+    this.update(this.pileService.pileEntries);
     this.pileSubscription = this.pileService.pile.subscribe((e) => {
-      this.entries = e;
-      this.sumMain();
-      this.sumCompletionist();
+      this.update(e);
     });
   }
 
   ngOnDestroy() {
     this.pileSubscription.unsubscribe();
+  }
+
+  private update(entries: Array<PileEntry>) {
+    this.entries = entries;
+    this.sumMain();
+    this.sumCompletionist();
   }
 
 

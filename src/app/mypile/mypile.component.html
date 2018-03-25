@@ -1,11 +1,23 @@
-<section class="section hero is-white is-bold">
-  <div class="hero-body">
-    <div class="container">
-      <div class="block">
-        <h1 class="title pixel">Compare</h1>
+<section class="section">
+  <div class="container">
+    <div class="block">
+      <h1 class="title pixel">Your pile</h1>
+      <div class="title is-3" *ngIf="entries.length === 0">
+        Add games to your pile of shame, using the search function.
+      </div>
+      <div *ngIf="entries.length !== 0">
         <div>
-          So, you have a pile. Alright. But what does that mean? How long does it take to beat it? What else could you do during this
-          time? And most important: How does it compare to others....
+          <i class="far fa-calendar-alt"></i>
+          <i class="far fa-calendar-alt"></i>
+          <i class="far fa-calendar-alt"></i>
+          <i class="far fa-calendar-alt"></i>
+        </div>
+        <div class="title is-4" >
+          {{ getSummary() }}
+        </div>
+        <div class="title is-4" >
+          During this time, you could
+          {{ getAlternative() }}
         </div>
       </div>
     </div>
@@ -13,9 +25,6 @@
 </section>
 <section class="section">
   <div class="container">
-    <div *ngIf="entries.length === 0">
-      Add games to your pile of shame, using the search function.
-    </div>
     <div *ngIf="entries.length !== 0">
       <div *ngFor="let pile of entries" class="card">
         <div class="card-content">
@@ -25,7 +34,8 @@
             </div>
             <div class="media-content">
               <p class="title is-6">
-                  {{ pile.name }}
+                {{ pile.name }}
+                <small>added {{ pile.added | date:mediumDate }}</small>
               </p>
               <p>
                 Main: {{ pile.gameplayMain }} - Completionist {{ pile.gameplayCompletionist }}
@@ -34,17 +44,19 @@
           </div>
         </div>
         <footer class="card-footer">
-            <p class="card-footer-item">
-              <span>
-                <a href="https://howlongtobeat.com/game.php?id={{pile.hltb_id }}" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i>&nbsp;View on Howlongtobeat</a>
-              </span>
-            </p>
-            <p class="card-footer-item">
-              <span>
-                <a (click)="onRemove(pile.id)"><i class="far fa-trash-alt"></i>&nbsp;Remove from pile.</a>
-              </span>
-            </p>
-          </footer>
+          <p class="card-footer-item">
+            <span>
+              <a href="https://howlongtobeat.com/game.php?id={{pile.hltb_id }}" target="_blank" rel="noopener">
+                <i class="fas fa-external-link-alt"></i>&nbsp;View on Howlongtobeat</a>
+            </span>
+          </p>
+          <p class="card-footer-item">
+            <span>
+              <a (click)="onRemove(pile.id)">
+                <i class="far fa-trash-alt"></i>&nbsp;Remove from pile.</a>
+            </span>
+          </p>
+        </footer>
       </div>
     </div>
   </div>

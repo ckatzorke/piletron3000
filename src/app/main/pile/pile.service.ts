@@ -9,9 +9,10 @@ import { User } from 'firebase/app';
 @Injectable()
 export class PileService {
 
+  private emitter: EventEmitter<Array<PileEntry>>;
   pileCollection: AngularFirestoreCollection<PileEntry>;
   pileEntries = new Array<PileEntry>();
-  pile = new Subject<Array<PileEntry>>();
+  pile: Observable<Array<PileEntry>> = Observable.create(e => this.emitter = e);
 
   constructor(private store: AngularFirestore, private auth: AngularFireAuth) {
     auth.authState.subscribe((user: User) => {
@@ -26,7 +27,7 @@ export class PileService {
             this.pileEntries.push(data as PileEntry);
             return data as PileEntry;
           });
-          this.pile.next(this.pileEntries);
+          this.emitter.next(this.pileEntries);
         });
       }
     });
@@ -45,26 +46,4 @@ export class PileService {
   }
 
 
-  // full work weeks (40 hrs)
-  // bingewatching
-  //  lotr
-  //  Star Wars
-  //  serien...
-  // travel to
-  //  mars, ...
-  // drive from-to
-  // soccer games
-  // level up in d&d
-  // build death star 1 (20yrs), 2 (3 yrs)
-  // build titanic (2yrs 2months)
-  // listen to carmina burana (63 minutes)
-  // ring der nibelungen (16 hrs)
-  // Oktoberfest (16 Tage)
-  // 80 days around the world phileas fogg
-  // fly from germany to new york (9 hrs)
-  // titanic cross atlantic (6 days)
-
-
 }
-
-export interface PileEntryId extends PileEntry { id: string; }

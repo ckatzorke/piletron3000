@@ -7,17 +7,20 @@
       </div>
       <div *ngIf="entries.length !== 0">
         <div>
-          <i class="far fa-calendar-alt"></i>
-          <i class="far fa-calendar-alt"></i>
-          <i class="far fa-calendar-alt"></i>
-          <i class="far fa-calendar-alt"></i>
+          <i *ngFor="let day of getDaysAsArray()" class="far fa-calendar-alt">
+          </i>
         </div>
         <div class="title is-4" >
-          {{ getSummary() }}
+          {{ getSummary() }}<br>
+          During this time, you could:
         </div>
-        <div class="title is-4" >
-          During this time, you could
-          {{ getAlternative() }}
+        <div class="">
+          <ul>
+            <li *ngFor="let alternative of alternatives">
+              <a href="{{ alternative.url }}" target="_blank" rel="noopener">
+                <i class="far fa-check-circle"></i> {{ alternative.description }} ({{ alternative.hours }} hours)</a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

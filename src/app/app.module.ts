@@ -26,6 +26,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { ProfileResolver } from './shared/profile-resolver.service';
+import { AlternativeService } from './shared/alternative.service';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { ProfileResolver } from './shared/profile-resolver.service';
     SearchService,
     UserService,
     PileService,
+    AlternativeService,
     SigninGuard,
     UserResolver,
     ProfileResolver,

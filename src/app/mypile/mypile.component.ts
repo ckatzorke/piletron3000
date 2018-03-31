@@ -28,8 +28,10 @@ export class MyPileComponent implements OnInit, OnDestroy {
 
   update(e: Array<PileEntry>) {
     this.entries = e;
-    this.sum = this.sumCompletionist();
-    this.alternatives = this.alternativeService.findAlternatives(this.sum);
+    if (e && e.length > 0) {
+      this.sum = this.sumCompletionist();
+      this.alternatives = this.alternativeService.findAlternatives(this.sum);
+    }
   }
 
   ngOnDestroy() {
@@ -48,8 +50,8 @@ export class MyPileComponent implements OnInit, OnDestroy {
   getSummary() {
     const sum = this.sumCompletionist();
     const days = Math.floor(sum / 24);
-    const hours = sum % 25;
-    const that_is = days === 0 ? '' : `(that is ${days} days and ${hours} hours) `;
+    const hours = sum % 24;
+    const that_is = days === 0 ? '' : `(that is ${days} day${days > 1 ? 's' : ''} and ${hours} hours) `;
     return `You need to play for ${sum} consecutive hours ${that_is}to finish your pile.`;
   }
 

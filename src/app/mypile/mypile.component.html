@@ -17,8 +17,12 @@
         <div class="">
           <ul>
             <li *ngFor="let alternative of alternatives">
-              <a href="{{ alternative.url }}" target="_blank" rel="noopener">
-                <i class="far fa-check-circle"></i> {{ alternative.description }} ({{ alternative.hours }} hours)</a>
+              <a *ngIf="alternative.url" href="{{ alternative.url }}" target="_blank" rel="noopener">
+                <i class="far fa-check-circle"></i> {{ alternative.description }} ({{ alternative.hours }} hours)
+              </a>
+              <span *ngIf="!alternative.url">
+                <i  class="far fa-check-circle"></i> {{ alternative.description }} ({{ alternative.hours }} hours)
+              </span>
             </li>
           </ul>
         </div>

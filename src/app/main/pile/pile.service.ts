@@ -5,6 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { User } from 'firebase/app';
+import { firebase } from 'firebase/firestore';
 
 @Injectable()
 export class PileService {
@@ -17,7 +18,11 @@ export class PileService {
   constructor(private store: AngularFirestore, private auth: AngularFireAuth) {
     auth.authState.subscribe((user: User) => {
       if (user) {
-        this.pileCollection = this.store.collection<PileEntry>(`users/${this.auth.auth.currentUser.uid}/pile`);
+        this.pileCollection = this.store.collection<PileEntry>(`users/${this.auth.auth.currentUser.uid}/pile`, ref => {
+          let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+          query = ref.orderBy('added', 'desc');
+          return query;
+        });
         this.pileCollection.snapshotChanges().subscribe((actions) => {
           console.log('Got actions', actions);
           this.pileEntries = actions.map((action) => {

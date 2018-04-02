@@ -1,9 +1,15 @@
 export class Profile {
-  userid: String;
-  email: String;
+  public static readonly GAMERTYPE_MAIN = 0;
+  public static readonly GAMERTYPE_MIXED = 1;
+  public static readonly GAMERTYPE_COMPLETIONIST = 2;
+  userid: string;
+  email: string;
   lastSignin: Date;
   signin: Date;
   signout: Date;
-  displayName: String;
-  gamertype: Number;
+  displayName: string;
+  gamertype: number;
+  constructor() {
+    this.gamertype = Profile.GAMERTYPE_MIXED;
+  }
 }

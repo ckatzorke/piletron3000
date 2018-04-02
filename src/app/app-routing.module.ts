@@ -13,7 +13,9 @@ const appRoutes: Routes = [
   {
     path: 'main', pathMatch: 'full', component: MainComponent
   },
-  { path: 'mypile', pathMatch: 'full', component: MyPileComponent, canActivate: [SigninGuard] },
+  {
+    path: 'mypile', pathMatch: 'full', component: MyPileComponent, canActivate: [SigninGuard], resolve: { profile: ProfileResolver }
+  },
   {
     path: 'profile', pathMatch: 'full', component: ProfileComponent, canActivate: [SigninGuard], resolve: {
       user: UserResolver, profile: ProfileResolver

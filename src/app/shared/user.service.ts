@@ -12,6 +12,7 @@ import { Subject } from 'rxjs/Subject';
 @Injectable()
 export class UserService {
 
+
   user: Observable<User>;
 
   constructor(private fauth: AngularFireAuth,
@@ -55,6 +56,10 @@ export class UserService {
     return this.loadProfile(this.fauth.auth.currentUser);
   }
 
+  updateProfile(profile: Profile) {
+    this.store.doc<Profile>(`users/${this.getCurrentUser().uid}`).set({ ...profile });
+  }
+
   private loadProfile(user: User): Promise<Profile> {
     console.log('user:', user.uid);
     return new Promise<Profile>((res, rej) => {
@@ -74,9 +79,14 @@ export class UserService {
           p.email = this.getCurrentUser().email;
           p.displayName = this.getCurrentUser().displayName;
           p.userid = this.getCurrentUser().uid;
+          p.gamertype = Profile.GAMERTYPE_MIXED;
           doc.set({ ...p }).then(() => res(p));
         } else {
-          res({ ...d.data() } as Profile);
+          const profile = { ...d.data() } as Profile;
+          if (!profile.gamertype) {
+            profile.gamertype = Profile.GAMERTYPE_MIXED;
+          }
+          res(profile);
         }
       });
     });

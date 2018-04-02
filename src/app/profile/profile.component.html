@@ -1,15 +1,15 @@
 <section class="section hero is-white is-bold">
-    <div class="hero-body">
-      <div class="container">
-        <div class="block">
-          <h1 class="title pixel">Profile</h1>
-          <div>
+  <div class="hero-body">
+    <div class="container">
+      <div class="block">
+        <h1 class="title pixel">Profile</h1>
+        <div>
 
-          </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 <section class="section">
   <div class="container">
     <h2 class="title">Hello {{ profile.displayName }}!</h2>
@@ -20,6 +20,32 @@
     <div class="columns">
       <div class="column is-one-quarter label">userid</div>
       <div class="column">{{ profile.userid }}</div>
+    </div>
+    <div class="columns">
+      <div class="column is-one-quarter label">
+        Gamer-type
+        <br>
+        <small>Specify what kind of gamer you are.</small>
+      </div>
+      <div class="column">
+        <label class="radio">
+          <input type="radio" name="gamertype" value="0"
+            [checked]="profile.gamertype === 0" (click)="updateGamertype(0)">
+              <strong>Rusher</strong> - I like to play as many games as possible, rushing through the main story.
+        </label>
+        <br>
+        <label class="radio">
+          <input type="radio" name="gamertype" value="1"
+            [checked]="profile.gamertype === 1" (click)="updateGamertype(1)">
+              <strong>Mixed</strong> - I like to enjoy my games, going through the story, but also doing some optional stuff. (default)
+        </label>
+        <br>
+        <label class="radio">
+          <input type="radio" name="gamertype" value="2"
+            [checked]="profile.gamertype === 2" (click)="updateGamertype(2)">
+              <strong>Completionist</strong> - I do not stop until I have 100% of a game. Every side story, every trophy/achievement is mine.
+        </label>
+      </div>
     </div>
   </div>
 </section>

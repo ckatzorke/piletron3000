@@ -34,8 +34,7 @@ export class SearchresultComponent implements OnInit {
   }
 
   isDisabled() {
-    return false;
-    // this.disabled || this.pileService.getEntries().filter((entry: PileEntry) => entry.hltb_id === this.result.id).length > 0;
+    return this.disabled || this.pileService.pileEntries.filter((entry: PileEntry) => entry.hltb_id === this.result.id).length > 0;
   }
 
   propability() {
@@ -65,7 +64,7 @@ export class SearchresultComponent implements OnInit {
         this.result.imageUrl,
         this.result.gameplayMain,
         this.result.gameplayCompletionist,
-        new Date()));
+        new Date())).then(() => this.disable());
   }
 
 }

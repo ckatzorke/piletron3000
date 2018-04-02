@@ -39,11 +39,13 @@ export class PileService {
 
   }
 
-  add(pileEntry: PileEntry) {
-    const docref = this.pileCollection.ref.doc();
-    const id = docref.id;
-    pileEntry.id = id;
-    docref.set({ ...pileEntry }).then(() => console.log('Written')).catch((e) => console.error(e));
+  add(pileEntry: PileEntry): Promise<PileEntry> {
+    return new Promise((res, rej) => {
+      const docref = this.pileCollection.ref.doc();
+      const id = docref.id;
+      pileEntry.id = id;
+      docref.set({ ...pileEntry }).then(() => res(pileEntry)).catch((e) => rej(e));
+    });
   }
 
   remove(id: string) {

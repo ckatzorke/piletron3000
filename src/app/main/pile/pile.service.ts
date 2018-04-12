@@ -52,5 +52,4 @@ export class PileService {
     this.pileCollection.doc(id).delete().then(() => console.log('Deleted')).catch((e) => console.error(e));
   }
 
-
 }

@@ -26,6 +26,8 @@ export class SearchresultComponent implements OnInit {
       }
     });
     */
+   this.result.summary = this.result.summary.replace(/\n/g, '<br>');
+   console.log(this.result.summary);
   }
 
   disable() {
@@ -34,7 +36,7 @@ export class SearchresultComponent implements OnInit {
   }
 
   isDisabled() {
-    return this.disabled || this.pileService.pileEntries.filter((entry: PileEntry) => entry.hltb_id === this.result.id).length > 0;
+    return this.disabled || this.pileService.pileEntries.filter((entry: PileEntry) => entry.igdb_id === this.result.id).length > 0;
   }
 
   propability() {
@@ -53,6 +55,7 @@ export class SearchresultComponent implements OnInit {
       <strong>${this.result.gameplayCompletionist}</strong> hours to beat this game`;
   }
 
+
   addToPile(event) {
     this.buttontext = 'Adding...';
     const element = this.window.document.getElementById('pile');
@@ -61,8 +64,10 @@ export class SearchresultComponent implements OnInit {
     this.pileService.add(
       new PileEntry(null, this.result.id,
         this.result.name,
+        this.result.url,
         this.result.imageUrl,
         this.result.gameplayMain,
+        this.result.gameplayMixed,
         this.result.gameplayCompletionist,
         new Date())).then(() => this.disable());
   }

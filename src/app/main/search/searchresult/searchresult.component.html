@@ -2,14 +2,15 @@
   <div class="card-content">
     <div class="media">
       <div class="media-left">
-          <img src="{{ result.imageUrl }}" alt="Cover of {{ result.name }}" width="96px">
+        <img src="{{ result.imageUrl }}" alt="Cover of {{ result.name }}" width="96px">
       </div>
       <div class="media-content">
         <p class="title is-6">
-          <a href="https://howlongtobeat.com/game.php?id={{result.id }}" title="Hit relevance: {{ propability() }}. Click for more info..."
-            target="_blank" rel="noopener">{{ result.name }}&nbsp;<i class="fas fa-external-link-alt"></i>
+          <a href="{{ result.url }}" title="{{ result.name }}" target="_blank" rel="noopener">{{ result.name }}&nbsp;
+            <i class="fas fa-external-link-alt"></i>
           </a>
         </p>
+        <span [innerHTML]="result.summary"></span>
         <p>
           <button class="button is-primary" title="Add to pile" (click)="addToPile($event)" [disabled]="isDisabled()">
             <i class="fas fa-plus-circle"></i>&nbsp;{{buttontext}}

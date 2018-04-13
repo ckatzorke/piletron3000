@@ -5,11 +5,17 @@ node_js:
 cache:
   directories:
     - "node_modules"
-before_deploy: "ng build --prod && cp dist/index.html dist/200.html"
+
+env:
+  - CI=true
+
+before_deploy:
+  - npm install netlify-cli -g
+  - "ng build --prod && cp dist/index.html dist/200.html"
+
 deploy:
-  provider: surge
+  provider: script
+  script: netlify deploy -s $NETLIFY_SITEID -t $NETLIFY_TOKEN -p ./dist
   skip_cleanup: true
-  project: ./dist
-  domain: https://piletron3000.surge.sh
   on:
     branch: master

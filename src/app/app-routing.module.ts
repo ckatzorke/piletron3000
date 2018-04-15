@@ -7,6 +7,8 @@ import { MyPileComponent } from './mypile/mypile.component';
 import { SigninGuard } from './shared/signin.guard';
 import { UserResolver } from './shared/user-resolver.service';
 import { ProfileResolver } from './shared/profile-resolver.service';
+import { ImprintComponent } from './imprint/imprint.component';
+import { PrivacyComponent } from './privacy/privacy.component';
 
 
 const appRoutes: Routes = [
@@ -22,6 +24,8 @@ const appRoutes: Routes = [
     }
   },
   { path: 'about', pathMatch: 'full', component: AboutComponent },
+  { path: 'imprint', pathMatch: 'full', component: ImprintComponent },
+  { path: 'privacy', pathMatch: 'full', component: PrivacyComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'main' }
 ];
 

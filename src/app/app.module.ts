@@ -27,6 +27,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { ProfileResolver } from './shared/profile-resolver.service';
 import { AlternativeService } from './shared/alternative.service';
+import { ImprintComponent } from './imprint/imprint.component';
+import { PrivacyComponent } from './privacy/privacy.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { AlternativeService } from './shared/alternative.service';
     SearchresultComponent,
     PileComponent,
     ProfileComponent,
-    MyPileComponent
+    MyPileComponent,
+    ImprintComponent,
+    PrivacyComponent
   ],
   imports: [
     BrowserModule,

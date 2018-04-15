@@ -76,8 +76,8 @@ export class MyPileComponent implements OnInit, OnDestroy {
 
     }
     const days = Math.floor(sum / 24);
-    const hours = sum % 24;
-    const that_is = days === 0 ? '' : `(that is ${days} day${days > 1 ? 's' : ''} and ${hours} hours) `;
+    const hours = sum % 24 === 0 ? '' : ` and ${sum % 24} hours`;
+    const that_is = days === 0 ? '' : `(that is ${days} day${days > 1 ? 's' : ''}${hours}) `;
 
     return `According to your gamer type (${gamertype}), you need to play for ${sum} consecutive hours ${that_is}to finish your pile.`;
   }

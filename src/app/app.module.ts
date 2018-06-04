@@ -10,7 +10,7 @@ import { AboutComponent } from './about/about.component';
 import { MainComponent } from './main/main.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SearchComponent } from './main/search/search.component';
-import { SearchService } from './main/search/search.service';
+import { HLTBSearchService } from './main/search/hltbsearch.service';
 import { SearchresultComponent } from './main/search/searchresult/searchresult.component';
 import { PileService } from './main/pile/pile.service';
 import { PileComponent } from './main/pile/pile.component';
@@ -56,7 +56,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
     AngularFireAuthModule
   ],
   providers: [
-    SearchService,
+    HLTBSearchService,
     UserService,
     PileService,
     AlternativeService,

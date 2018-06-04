@@ -1,4 +1,4 @@
-export class SearchResult {
+export class HLTBSearchResult {
   constructor(
     public id: string,
     public name: string,

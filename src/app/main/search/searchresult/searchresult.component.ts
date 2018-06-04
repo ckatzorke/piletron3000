@@ -1,6 +1,6 @@
 import { PileEntry } from '../../pile/pile.model';
 import { PileService } from '../../pile/pile.service';
-import { SearchResult } from '../searchresult.model';
+import { HLTBSearchResult } from '../hltbsearchresult.model';
 import { Component, OnInit, Inject } from '@angular/core';
 import { Input } from '@angular/core';
 
@@ -11,7 +11,7 @@ import { Input } from '@angular/core';
 })
 export class SearchresultComponent implements OnInit {
 
-  @Input() result: SearchResult;
+  @Input() result: HLTBSearchResult;
 
   buttontext = 'Add to pile';
   disabled = false;

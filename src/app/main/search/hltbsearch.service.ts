@@ -1,20 +1,20 @@
-import { SearchResult } from './searchresult.model';
+import { HLTBSearchResult } from './hltbsearchresult.model';
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 
 @Injectable()
-export class SearchService {
+export class HLTBSearchService {
 
   /**
    * Subscribe to this observable to get updates of search results
    */
-  updates = new EventEmitter<Array<SearchResult>>();
+  updates = new EventEmitter<Array<HLTBSearchResult>>();
 
-  results: Array<SearchResult>;
+  results: Array<HLTBSearchResult>;
 
   constructor(private http: HttpClient) { }
 
-  getResults(): Array<SearchResult> {
+  getResults(): Array<HLTBSearchResult> {
     return this.results;
   }
 

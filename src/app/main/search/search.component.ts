@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchResult } from './searchresult.model';
-import { SearchService } from './search.service';
+import { HLTBSearchResult } from './hltbsearchresult.model';
+import { HLTBSearchService } from './hltbsearch.service';
 
 
 @Component({
@@ -12,9 +12,9 @@ export class SearchComponent implements OnInit {
 
   searchTerm = '';
   searching = false;
-  searchResults: Array<SearchResult> = new Array<SearchResult>();
+  searchResults: Array<HLTBSearchResult> = new Array<HLTBSearchResult>();
 
-  constructor(private searchService: SearchService) { }
+  constructor(private searchService: HLTBSearchService) { }
 
   ngOnInit() {
     this.searchService.updates.subscribe((updatedResults) => {

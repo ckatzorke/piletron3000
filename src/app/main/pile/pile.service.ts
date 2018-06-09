@@ -2,10 +2,10 @@ import { PileEntry } from './pile.model';
 import { EventEmitter, Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 import { User } from 'firebase/app';
-import { firebase } from 'firebase/firestore';
+import { firestore } from 'firebase';
 
 @Injectable()
 export class PileService {
@@ -19,7 +19,7 @@ export class PileService {
     auth.authState.subscribe((user: User) => {
       if (user) {
         this.pileCollection = this.store.collection<PileEntry>(`users/${this.auth.auth.currentUser.uid}/pile`, ref => {
-          let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+          let query: firestore.CollectionReference | firestore.Query = ref;
           query = ref.orderBy('added', 'desc');
           return query;
         });

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router/src/router_state';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { PileEntry } from '../main/pile/pile.model';
 import { PileService } from '../main/pile/pile.service';
 

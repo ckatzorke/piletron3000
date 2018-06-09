@@ -3,7 +3,7 @@ import { UserService } from './user.service';
 import { Resolve } from '@angular/router';
 import { User } from 'firebase/app';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router/src/router_state';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 
 @Injectable()

@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PileService } from '../main/pile/pile.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { PileEntry } from '../main/pile/pile.model';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { AlternativeService, Alternative } from '../shared/alternative.service';
 import { ActivatedRoute, Data } from '@angular/router';
 import { Profile } from '../shared/profile.model';

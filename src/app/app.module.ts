@@ -29,6 +29,7 @@ import { ProfileResolver } from './shared/profile-resolver.service';
 import { AlternativeService } from './shared/alternative.service';
 import { ImprintComponent } from './imprint/imprint.component';
 import { PrivacyComponent } from './privacy/privacy.component';
+import IGDBSearchService from './main/search/igdbsearch.service';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
     AngularFireAuthModule
   ],
   providers: [
+    IGDBSearchService,
     HLTBSearchService,
     UserService,
     PileService,

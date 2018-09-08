@@ -7,19 +7,19 @@ export class IGDBSearchResult {
     public created_at: Date,
     public updated_at: Date,
     public summary: string,
-    public time_to_beat: IGDBBTimeToBeat,
+    public time_to_beat: IGDBTimeToBeat,
     public genre: IGDBGenre[],
     public first_release_date: Date,
     public platform: IGDBPlatform[],
     public release_dates: IGDBReleaseDate[],
-    public cover: IGDBImage,
+    public cover: IGDBCover,
     public screenshots: IGDBImage[],
     public videos: IGDBVideo[],
     public websites: IGDBWebsite[]
   ) { }
 }
 
-export class IGDBBTimeToBeat {
+export class IGDBTimeToBeat {
   constructor(
     public hastly: number,
     public normally: number,
@@ -66,6 +66,17 @@ export class IGDBImage {
     public height: number
   ) { }
 
+}
+
+export class IGDBCover extends IGDBImage {
+  public readonly coverUrl = `${this.CLOUDINARY_BASE_URL}/t_cover_small/${this.cloudinary_id}.jpg`;
+}
+
+export class IGDBPlaceholderCover extends IGDBCover {
+  public readonly coverUrl = 'https://via.placeholder.com/90x116';
+  constructor() {
+    super(null, null, null, null);
+   }
 }
 
 export class IGDBVideo {

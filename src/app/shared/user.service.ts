@@ -29,19 +29,21 @@ export class UserService {
       this.loadProfile(p.user).then((profile) => {
         profile.lastSignin = profile.signin ? profile.signin : null;
         profile.signin = new Date();
-        this.store.doc<Profile>(`users/${p.user.uid}`).update(profile);
+        this.store.doc<Profile>(`users/${p.user.uid}`).update({ ...profile });
       });
     });
   }
 
-  logout(): void {
+  async logout() {
     // first update doc, since we are not allowed afterwards...
     const signout = new Date();
-    this.store.doc<Profile>(`users/${this.fauth.auth.currentUser.uid}`).update({ 'signout': signout }).then(() => {
-      this.fauth.auth.signOut().then(() => {
-        this.router.navigate(['/home']);
-      });
-    });
+    try {
+      await this.store.doc<Profile>(`users/${this.fauth.auth.currentUser.uid}`).update({ 'signout': signout });
+    } catch (error) {
+      console.error('Could not update user document!', error);
+    }
+    await this.fauth.auth.signOut();
+    this.router.navigate(['/home']);
   }
 
   isLoggedIn(): boolean {

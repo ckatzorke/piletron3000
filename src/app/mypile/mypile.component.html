@@ -42,7 +42,7 @@
             <div class="media-content">
               <p class="title is-6">
                 {{ pile.name }}
-                <small>added {{ pile.added | date:mediumDate }}</small>
+                <small>added {{ pile.added.toDate() | date:mediumDate }}</small>
               </p>
               <p>
                 Main: {{ pile.gameplayMain }} - Completionist {{ pile.gameplayCompletionist }}

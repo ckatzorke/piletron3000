@@ -15,7 +15,7 @@ before_deploy:
 
 deploy:
   provider: script
-  script: netlify deploy --site=$NETLIFY_SITEID --auth=$NETLIFY_TOKEN --dir=dist
+  script: netlify deploy --site=$NETLIFY_SITEID --auth=$NETLIFY_TOKEN --dir=dist --prod
   skip_cleanup: true
   on:
     branch: master

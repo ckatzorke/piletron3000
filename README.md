@@ -1,8 +1,8 @@
 # PileTron3000
 
-![Latest Build Status](https://api.travis-ci.org/ckatzorke/piletron3000.svg?branch=master)
+![Latest Build Status](https://api.travis-ci.org/ckatzorke/piletron3000.svg?branch=master) [![Netlify Status](https://api.netlify.com/api/v1/badges/06328a25-84bb-4c63-a33d-fe2846260af7/deploy-status)](https://app.netlify.com/sites/priceless-murdock-2794f2/deploys)
 
-Check version deployed to [surge](https://piletron3000.surge.sh)
+Check [deployed version](https://piletron3000.katzorke.io)
 
 A side project to visualize/materialize your inevitable pile of shame, every grown up, working/parenting person knows.
 It uses data from [Howlongtobeat](https://howlongtobeat.com), packed in a serverless function hosted on [Stdlib](https://stdlib.com) using my own library [howlongtobeat](https://github.com/ckatzorke/howlongtobeat).

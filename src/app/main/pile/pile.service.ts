@@ -5,7 +5,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { User } from 'firebase/app';
-import { firebase } from 'firebase/firestore';
+import { firestore } from 'firebase';
 
 @Injectable()
 export class PileService {

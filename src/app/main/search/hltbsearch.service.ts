@@ -19,7 +19,7 @@ export class HLTBSearchService {
   }
 
   search(searchTerm: string): void {
-    this.http.get(`https://ckatzorke.lib.id/hltb/?search=${searchTerm}`).subscribe(data => {
+    this.http.get(`https://libratron3000.katzorke.io/.netlify/functions/hltb?search=${searchTerm}`).subscribe(data => {
       this.results = data['result'];
       this.updates.emit(this.results);
     }, err => {
